@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Classes - Admin - IronCore Gym{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="color: #ffb800; margin-bottom: 2rem;">Class Management</h1>
+    
+    <div style="margin-bottom: 2rem;">
+        <a href="{{ url_for('add_class') }}" style="padding: 1rem 2rem; background: #ffb800; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold;">Add New Class</a>
+    </div>
+    
+    <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="border-bottom: 2px solid #ffb800;">
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Class Name</th>
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Category</th>
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Trainer</th>
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Capacity</th>
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for class in classes %}
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 1rem; color: #e0e0e0;">{{ class.name }}</td>
+                    <td style="padding: 1rem; color: #e0e0e0;">{{ class.category }}</td>
+                    <td style="padding: 1rem; color: #e0e0e0;">{{ class.trainer.first_name }} {{ class.trainer.last_name }}</td>
+                    <td style="padding: 1rem; color: #e0e0e0;">{{ class.current_capacity }}/{{ class.max_capacity }}</td>
+                    <td style="padding: 1rem;">
+                        <a href="{{ url_for('edit_class', class_id=class.id) }}" style="padding: 0.5rem 1rem; background: #007bff; color: #fff; text-decoration: none; border-radius: 3px; margin-right: 0.5rem;">Edit</a>
+                        <form method="POST" action="{{ url_for('delete_class', class_id=class.id) }}" style="display: inline;">
+                            <button type="submit" onclick="return confirm('Are you sure?')" style="padding: 0.5rem 1rem; background: #dc3545; color: #fff; border: none; border-radius: 3px; cursor: pointer;">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <a href="{{ url_for('admin_dashboard') }}" style="padding: 1rem 2rem; background: #ffb800; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 2rem; display: inline-block;">Back to Dashboard</a>
+</div>
+{% endblock %}

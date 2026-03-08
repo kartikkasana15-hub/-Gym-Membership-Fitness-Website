@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Register - IronCore Gym{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="max-width: 500px; margin: 2rem auto; background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800;">
+        <h2 style="color: #ffb800; text-align: center; margin-bottom: 2rem;">Create Your Account</h2>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            
+            <div style="margin-bottom: 1rem;">
+                {{ form.username.label(style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;") }}
+                {{ form.username(style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;") }}
+                {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                        <span style="color: #ff6b6b; font-size: 0.875rem;">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+                {{ form.email.label(style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;") }}
+                {{ form.email(style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;") }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <span style="color: #ff6b6b; font-size: 0.875rem;">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+                {{ form.password.label(style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;") }}
+                {{ form.password(style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;") }}
+                {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        <span style="color: #ff6b6b; font-size: 0.875rem;">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+                {{ form.confirm_password.label(style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;") }}
+                {{ form.confirm_password(style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;") }}
+                {% if form.confirm_password.errors %}
+                    {% for error in form.confirm_password.errors %}
+                        <span style="color: #ff6b6b; font-size: 0.875rem;">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                <div>
+                    {{ form.first_name.label(style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;") }}
+                    {{ form.first_name(style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;") }}
+                    {% if form.first_name.errors %}
+                        {% for error in form.first_name.errors %}
+                            <span style="color: #ff6b6b; font-size: 0.875rem;">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.last_name.label(style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;") }}
+                    {{ form.last_name(style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;") }}
+                    {% if form.last_name.errors %}
+                        {% for error in form.last_name.errors %}
+                            <span style="color: #ff6b6b; font-size: 0.875rem;">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+                {{ form.phone.label(style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;") }}
+                {{ form.phone(style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;") }}
+                {% if form.phone.errors %}
+                    {% for error in form.phone.errors %}
+                        <span style="color: #ff6b6b; font-size: 0.875rem;">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <div style="margin-bottom: 2rem;">
+                {{ form.date_of_birth.label(style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;") }}
+                {{ form.date_of_birth(style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;") }}
+                {% if form.date_of_birth.errors %}
+                    {% for error in form.date_of_birth.errors %}
+                        <span style="color: #ff6b6b; font-size: 0.875rem;">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <button type="submit" style="width: 100%; padding: 1rem; background: #ffb800; color: #000; border: none; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer;">Create Account</button>
+        </form>
+        
+        <p style="text-align: center; margin-top: 1.5rem; color: #aaa;">Already have an account? <a href="{{ url_for('login') }}" style="color: #ffb800; text-decoration: none;">Login here</a></p>
+    </div>
+</div>
+{% endblock %}

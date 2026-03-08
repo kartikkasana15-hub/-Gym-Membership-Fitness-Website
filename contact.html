@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - IronCore Gym{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="color: #ffb800; text-align: center; margin-bottom: 3rem;">Contact IronCore Gym</h1>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem;">
+        <!-- Contact Info -->
+        <div>
+            <h2 style="color: #ffb800; margin-bottom: 2rem;">Get In Touch</h2>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #ffb800;"><i class="fas fa-map-marker-alt" style="margin-right: 1rem;"></i>Address</h3>
+                <p style="color: #aaa;">123 Fitness Street<br>Workout City, WC 12345</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #ffb800;"><i class="fas fa-phone" style="margin-right: 1rem;"></i>Phone</h3>
+                <p style="color: #aaa;">(555) 123-4567</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #ffb800;"><i class="fas fa-envelope" style="margin-right: 1rem;"></i>Email</h3>
+                <p style="color: #aaa;">info@ironcoregym.com</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #ffb800;"><i class="fas fa-clock" style="margin-right: 1rem;"></i>Hours</h3>
+                <p style="color: #aaa;">Mon-Fri: 5:00 AM - 11:00 PM<br>Sat-Sun: 6:00 AM - 10:00 PM</p>
+            </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800;">
+            <h2 style="color: #ffb800; margin-bottom: 2rem;">Send us a Message</h2>
+            <form method="POST">
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;">Name</label>
+                    <input type="text" name="name" required style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;">Email</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;">Subject</label>
+                    <input type="text" name="subject" required style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0;">
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <label style="display: block; color: #e0e0e0; margin-bottom: 0.5rem;">Message</label>
+                    <textarea name="message" rows="5" required style="width: 100%; padding: 0.75rem; background: #2a2a2a; border: 1px solid #444; border-radius: 5px; color: #e0e0e0; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" style="width: 100%; padding: 1rem; background: #ffb800; color: #000; border: none; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer;">Send Message</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

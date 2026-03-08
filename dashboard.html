@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - IronCore Gym{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="color: #ffb800; margin-bottom: 2rem;">Welcome back, {{ current_user.first_name }}!</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'danger' if category == 'error' else category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+        <!-- User Info Card -->
+        <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800;">
+            <h3 style="color: #ffb800; margin-bottom: 1rem;"><i class="fas fa-user"></i> Your Profile</h3>
+            <p><strong>Username:</strong> {{ current_user.username }}</p>
+            <p><strong>Email:</strong> {{ current_user.email }}</p>
+            <p><strong>Member since:</strong> {{ current_user.join_date.strftime('%B %Y') }}</p>
+            <p><strong>Membership:</strong> {{ current_user.membership.name if current_user.membership else 'None' }}</p>
+            <a href="#" style="color: #ffb800; text-decoration: none;">Edit Profile</a>
+        </div>
+        
+        <!-- Upcoming Classes -->
+        <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800;">
+            <h3 style="color: #ffb800; margin-bottom: 1rem;"><i class="fas fa-calendar-alt"></i> Upcoming Classes</h3>
+            {% if upcoming_classes %}
+                {% for class in upcoming_classes %}
+                    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #333;">
+                        <h4>{{ class.name }}</h4>
+                        <p>{{ class.schedule.strftime('%A, %B %d at %I:%M %p') }}</p>
+                        <p>Trainer: {{ class.trainer.first_name }} {{ class.trainer.last_name }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No upcoming classes booked.</p>
+            {% endif %}
+            <a href="{{ url_for('classes') }}" style="color: #ffb800; text-decoration: none;">Browse Classes</a>
+        </div>
+        
+        <!-- Membership Status -->
+        <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800;">
+            <h3 style="color: #ffb800; margin-bottom: 1rem;"><i class="fas fa-id-card"></i> Membership</h3>
+            {% if current_user.membership %}
+                <p><strong>Plan:</strong> {{ current_user.membership.name }}</p>
+                <p><strong>Expires:</strong> {{ (current_user.join_date + timedelta(days=current_user.membership.duration_days)).strftime('%B %d, %Y') }}</p>
+                <p><strong>Classes per week:</strong> {{ current_user.membership.max_classes_per_week }}</p>
+            {% else %}
+                <p>You don't have an active membership.</p>
+                <a href="{{ url_for('membership') }}" style="color: #ffb800; text-decoration: none;">View Membership Options</a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div style="text-align: center;">
+        <a href="{{ url_for('classes') }}" style="display: inline-block; padding: 1rem 2rem; background: #ffb800; color: #000; text-decoration: none; border-radius: 5px; margin: 0 1rem; font-weight: bold;">Book a Class</a>
+        <a href="{{ url_for('membership') }}" style="display: inline-block; padding: 1rem 2rem; background: #ffb800; color: #000; text-decoration: none; border-radius: 5px; margin: 0 1rem; font-weight: bold;">Upgrade Membership</a>
+    </div>
+</div>
+{% endblock %}

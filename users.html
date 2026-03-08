@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Users - Admin - IronCore Gym{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="color: #ffb800; margin-bottom: 2rem;">User Management</h1>
+    
+    <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800; margin-bottom: 2rem;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="border-bottom: 2px solid #ffb800;">
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Username</th>
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Email</th>
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Membership</th>
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Status</th>
+                    <th style="padding: 1rem; text-align: left; color: #ffb800;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 1rem; color: #e0e0e0;">{{ user.username }}</td>
+                    <td style="padding: 1rem; color: #e0e0e0;">{{ user.email }}</td>
+                    <td style="padding: 1rem; color: #e0e0e0;">{{ user.membership.name if user.membership else 'None' }}</td>
+                    <td style="padding: 1rem; color: #e0e0e0;">
+                        <span style="color: {{ '#28a745' if user.is_active else '#dc3545' }};">
+                            {{ 'Active' if user.is_active else 'Inactive' }}
+                        </span>
+                    </td>
+                    <td style="padding: 1rem;">
+                        <form method="POST" action="{{ url_for('toggle_user_status', user_id=user.id) }}" style="display: inline;">
+                            <button type="submit" style="padding: 0.5rem 1rem; background: {{ '#dc3545' if user.is_active else '#28a745' }}; color: #fff; border: none; border-radius: 3px; cursor: pointer;">
+                                {{ 'Deactivate' if user.is_active else 'Activate' }}
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <a href="{{ url_for('admin_dashboard') }}" style="padding: 1rem 2rem; background: #ffb800; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold;">Back to Dashboard</a>
+</div>
+{% endblock %}

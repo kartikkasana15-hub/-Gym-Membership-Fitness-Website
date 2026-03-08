@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - IronCore Gym{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="color: #ffb800; text-align: center; margin-bottom: 3rem;">About IronCore Gym</h1>
+    
+    <div style="background: #1a1a1a; padding: 3rem; border-radius: 10px; border: 1px solid #ffb800; margin-bottom: 3rem; text-align: center;">
+        <h2 style="color: #ffb800; margin-bottom: 2rem;">Forging Champions Since 2010</h2>
+        <p style="font-size: 1.2rem; color: #aaa; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+            IronCore Gym is more than just a fitness center – we're a community dedicated to helping you achieve your personal best. 
+            With state-of-the-art equipment, expert trainers, and a supportive environment, we provide everything you need to transform your body and mind.
+        </p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+        <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800; text-align: center;">
+            <i class="fas fa-dumbbell" style="font-size: 3rem; color: #ffb800; margin-bottom: 1rem;"></i>
+            <h3 style="color: #ffb800; margin-bottom: 1rem;">Modern Equipment</h3>
+            <p style="color: #aaa;">Access to the latest fitness technology and equipment to maximize your workout efficiency.</p>
+        </div>
+        <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800; text-align: center;">
+            <i class="fas fa-users" style="font-size: 3rem; color: #ffb800; margin-bottom: 1rem;"></i>
+            <h3 style="color: #ffb800; margin-bottom: 1rem;">Expert Trainers</h3>
+            <p style="color: #aaa;">Certified fitness professionals ready to guide you through your fitness journey.</p>
+        </div>
+        <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800; text-align: center;">
+            <i class="fas fa-heart" style="font-size: 3rem; color: #ffb800; margin-bottom: 1rem;"></i>
+            <h3 style="color: #ffb800; margin-bottom: 1rem;">Community Focus</h3>
+            <p style="color: #aaa;">Join a supportive community that motivates and inspires you to reach your goals.</p>
+        </div>
+    </div>
+    
+    <div style="background: #1a1a1a; padding: 3rem; border-radius: 10px; border: 1px solid #ffb800; margin-bottom: 3rem;">
+        <h2 style="color: #ffb800; text-align: center; margin-bottom: 2rem;">Meet Our Trainers</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            {% for trainer in trainers %}
+            <div style="text-align: center;">
+                <img src="{{ url_for('static', filename='images/' + (trainer.image_url or 'default.jpg')) }}" alt="{{ trainer.name }}" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid #ffb800;">
+                <h4 style="color: #ffb800;">{{ trainer.name }}</h4>
+                <p style="color: #aaa;">{{ trainer.specialty or 'Fitness Trainer' }}</p>
+                <p style="color: #666; font-size: 0.9rem;">{{ trainer.bio or 'Experienced trainer dedicated to helping you achieve your fitness goals.' }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div style="text-align: center;">
+        <h2 style="color: #ffb800; margin-bottom: 2rem;">Ready to Start Your Journey?</h2>
+        <p style="color: #aaa; margin-bottom: 2rem; font-size: 1.1rem;">Join IronCore Gym today and take the first step towards a healthier, stronger you.</p>
+        <a href="{{ url_for('register') }}" style="display: inline-block; padding: 1rem 2rem; background: #ffb800; color: #000; text-decoration: none; border-radius: 5px; font-size: 1.1rem; font-weight: bold;">Join Now</a>
+    </div>
+</div>
+{% endblock %}

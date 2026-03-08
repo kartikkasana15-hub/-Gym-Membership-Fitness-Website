@@ -1,0 +1,385 @@
+{% extends "base.html" %}
+
+{% block title %}IronCore Gym - India's Most Scientific Fitness Program{% endblock %}
+
+{% block content %}
+<!-- Hero Section - cult.fit Style -->
+<section class="hero-section" style="background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); padding: 2rem 0;">
+    <div class="container">
+        <div style="display: flex; align-items: center; gap: 4rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <span style="color: #ffb800; font-weight: 600; letter-spacing: 2px; margin-bottom: 1rem; display: block;">INDIA'S MOST SCIENTIFIC GYM</span>
+                <h1 style="font-size: 3.5rem; line-height: 1.2; margin: 1rem 0;">
+                    One membership for all your 
+                    <span style="color: #ffb800;">fitness needs</span>
+                </h1>
+                <p style="font-size: 1.2rem; color: #ccc; margin: 2rem 0;">
+                    Group workouts, personal training, yoga, and nutrition counseling - all under one roof.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="{{ url_for('register') }}" class="btn" style="background: #ffb800; color: #000; padding: 1rem 2.5rem; border-radius: 50px; font-weight: bold; text-decoration: none;">START FREE TRIAL</a>
+                    <a href="#membership" class="btn" style="border: 2px solid #ffb800; color: #ffb800; padding: 1rem 2.5rem; border-radius: 50px; font-weight: bold; text-decoration: none;">VIEW PLANS</a>
+                </div>
+                <div style="display: flex; gap: 2rem; margin-top: 3rem;">
+                    <div><span style="color: #ffb800; font-size: 2rem; font-weight: bold;">50+</span><br><span style="color: #888;">Daily Classes</span></div>
+                    <div><span style="color: #ffb800; font-size: 2rem; font-weight: bold;">25+</span><br><span style="color: #888;">Expert Trainers</span></div>
+                    <div><span style="color: #ffb800; font-size: 2rem; font-weight: bold;">24/7</span><br><span style="color: #888;">Gym Access</span></div>
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <img src="{{ url_for('static', filename='images/hero-athlete.jpg') }}" 
+                     alt="Athlete Training"
+                     style="width: 100%; border-radius: 30px;"
+                     onerror="this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=600&fit=crop'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- cultpass Section -->
+<section style="background: #0a0a0a; padding: 5rem 0;">
+    <div class="container">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
+            <span style="color: #ffb800;">IRONPASS</span>
+            <span style="display: block; font-size: 1.2rem; color: #888; margin-top: 1rem;">One membership for all your fitness needs</span>
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <!-- Pass Card 1 -->
+            <div style="background: #1a1a1a; border-radius: 30px; padding: 2rem; text-align: center;">
+                <span style="background: #333; color: #ffb800; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem;">HOME</span>
+                <h3 style="margin: 1.5rem 0; font-size: 2rem;">₹999<span style="font-size: 1rem; color: #888;">/mo</span></h3>
+                <p style="color: #888;">Access to live online classes</p>
+                <ul style="list-style: none; padding: 0; margin: 2rem 0; text-align: left;">
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> 50+ live classes/week</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> Yoga & meditation</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> HIIT & strength</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> Nutrition workshops</li>
+                </ul>
+                <a href="#" class="btn" style="background: transparent; border: 2px solid #ffb800; color: #ffb800; padding: 1rem; border-radius: 50px; display: block; text-decoration: none;">SELECT PLAN</a>
+            </div>
+            
+            <!-- Pass Card 2 - Popular -->
+            <div style="background: #1a1a1a; border-radius: 30px; padding: 2rem; text-align: center; border: 2px solid #ffb800; transform: scale(1.05);">
+                <span style="background: #ffb800; color: #000; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem;">MOST POPULAR</span>
+                <h3 style="margin: 1.5rem 0; font-size: 2rem;">₹1,999<span style="font-size: 1rem; color: #888;">/mo</span></h3>
+                <p style="color: #888;">Access to all gyms + online</p>
+                <ul style="list-style: none; padding: 0; margin: 2rem 0; text-align: left;">
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> All home pass features</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> Access to 50+ gyms</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> Personal training</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> Steam & sauna</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> Guest passes</li>
+                </ul>
+                <a href="#" class="btn" style="background: #ffb800; color: #000; padding: 1rem; border-radius: 50px; display: block; text-decoration: none; font-weight: bold;">SELECT PLAN</a>
+            </div>
+            
+            <!-- Pass Card 3 -->
+            <div style="background: #1a1a1a; border-radius: 30px; padding: 2rem; text-align: center;">
+                <span style="background: #333; color: #ffb800; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem;">ELITE</span>
+                <h3 style="margin: 1.5rem 0; font-size: 2rem;">₹2,999<span style="font-size: 1rem; color: #888;">/mo</span></h3>
+                <p style="color: #888;">Premium access + extra benefits</p>
+                <ul style="list-style: none; padding: 0; margin: 2rem 0; text-align: left;">
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> All gym pass features</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> 1-on-1 coaching</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> Custom meal plans</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> Recovery sessions</li>
+                    <li style="margin: 1rem 0;"><i class="fas fa-check" style="color: #ffb800; margin-right: 10px;"></i> Family add-on</li>
+                </ul>
+                <a href="#" class="btn" style="background: transparent; border: 2px solid #ffb800; color: #ffb800; padding: 1rem; border-radius: 50px; display: block; text-decoration: none;">SELECT PLAN</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Group Classes Section - Fun, trainer led group classes -->
+<section style="padding: 5rem 0;">
+    <div class="container">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">
+            Fun, trainer led <span style="color: #ffb800;">group classes</span>
+        </h2>
+        <p style="text-align: center; color: #888; margin-bottom: 4rem; font-size: 1.2rem;">Sweat it out with friends and expert trainers</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <!-- Class Card 1 -->
+            <div style="position: relative; border-radius: 30px; overflow: hidden; height: 350px;">
+                <img src="{{ url_for('static', filename='images/class-hiit.jpg') }}" 
+                     alt="HIIT"
+                     style="width: 100%; height: 100%; object-fit: cover;"
+                     onerror="this.src='https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=300&h=350&fit=crop'">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 2rem;">
+                    <span style="background: #ffb800; color: #000; padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.9rem; display: inline-block; margin-bottom: 1rem;">🔥 HIGH INTENSITY</span>
+                    <h3 style="color: white; margin: 0;">HIIT BLAST</h3>
+                    <p style="color: #ccc;">30 mins • Burn 400+ calories</p>
+                </div>
+            </div>
+            
+            <!-- Class Card 2 -->
+            <div style="position: relative; border-radius: 30px; overflow: hidden; height: 350px;">
+                <img src="{{ url_for('static', filename='images/class-yoga.jpg') }}" 
+                     alt="Yoga"
+                     style="width: 100%; height: 100%; object-fit: cover;"
+                     onerror="this.src='https://images.unsplash.com/photo-1545389336-cf090694435e?w=300&h=350&fit=crop'">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 2rem;">
+                    <span style="background: #ffb800; color: #000; padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.9rem; display: inline-block; margin-bottom: 1rem;">🧘 MINDFULNESS</span>
+                    <h3 style="color: white; margin: 0;">POWER YOGA</h3>
+                    <p style="color: #ccc;">45 mins • Flexibility & strength</p>
+                </div>
+            </div>
+            
+            <!-- Class Card 3 -->
+            <div style="position: relative; border-radius: 30px; overflow: hidden; height: 350px;">
+                <img src="{{ url_for('static', filename='images/class-strength.jpg') }}" 
+                     alt="Strength"
+                     style="width: 100%; height: 100%; object-fit: cover;"
+                     onerror="this.src='https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300&h=350&fit=crop'">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 2rem;">
+                    <span style="background: #ffb800; color: #000; padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.9rem; display: inline-block; margin-bottom: 1rem;">💪 STRENGTH</span>
+                    <h3 style="color: white; margin: 0;">IRON WARRIOR</h3>
+                    <p style="color: #ccc;">60 mins • Full body strength</p>
+                </div>
+            </div>
+            
+            <!-- Class Card 4 -->
+            <div style="position: relative; border-radius: 30px; overflow: hidden; height: 350px;">
+                <img src="{{ url_for('static', filename='images/class-boxing.jpg') }}" 
+                     alt="Boxing"
+                     style="width: 100%; height: 100%; object-fit: cover;"
+                     onerror="this.src='https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=300&h=350&fit=crop'">
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 2rem;">
+                    <span style="background: #ffb800; color: #000; padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.9rem; display: inline-block; margin-bottom: 1rem;">🥊 CARDIO</span>
+                    <h3 style="color: white; margin: 0;">BOX FIT</h3>
+                    <p style="color: #ccc;">45 mins • Boxing + conditioning</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#" class="btn" style="background: transparent; border: 2px solid #ffb800; color: #ffb800; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: bold;">VIEW ALL CLASSES →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Grid - What we offer -->
+<section style="background: #0a0a0a; padding: 5rem 0;">
+    <div class="container">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
+            <span style="color: #ffb800;">One membership</span> for all your fitness needs
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+            <div style="text-align: center;">
+                <div style="background: #1a1a1a; width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-dumbbell" style="color: #ffb800; font-size: 2rem;"></i>
+                </div>
+                <h4>Gym & Fitness</h4>
+                <p style="color: #888;">50+ locations with premium equipment</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <div style="background: #1a1a1a; width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-heartbeat" style="color: #ffb800; font-size: 2rem;"></i>
+                </div>
+                <h4>Group Classes</h4>
+                <p style="color: #888;">500+ weekly sessions</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <div style="background: #1a1a1a; width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-spa" style="color: #ffb800; font-size: 2rem;"></i>
+                </div>
+                <h4>Yoga & Meditation</h4>
+                <p style="color: #888;">Mindfulness for everyone</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <div style="background: #1a1a1a; width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-apple-alt" style="color: #ffb800; font-size: 2rem;"></i>
+                </div>
+                <h4>Nutrition</h4>
+                <p style="color: #888;">Personalized meal plans</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <div style="background: #1a1a1a; width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user-md" style="color: #ffb800; font-size: 2rem;"></i>
+                </div>
+                <h4>Health Checkups</h4>
+                <p style="color: #888;">Regular assessments</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trainer Section - Meet the team -->
+<section style="padding: 5rem 0;">
+    <div class="container">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
+            Meet our <span style="color: #ffb800;">expert trainers</span>
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            <!-- Trainer 1 -->
+            <div style="background: #1a1a1a; border-radius: 30px; overflow: hidden;">
+                <img src="{{ url_for('static', filename='images/trainer-ajay.jpg') }}" 
+                     alt="Ajay Singh"
+                     style="width: 100%; height: 300px; object-fit: cover;"
+                     onerror="this.src='https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=300&h=300&fit=crop'">
+                <div style="padding: 1.5rem;">
+                    <h4 style="margin: 0;">Ajay Singh</h4>
+                    <p style="color: #ffb800; margin: 0.5rem 0;">Head Trainer</p>
+                    <p style="color: #888;">15+ years • Strength specialist</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="#" style="color: #888;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #888;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #888;"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trainer 2 -->
+            <div style="background: #1a1a1a; border-radius: 30px; overflow: hidden;">
+                <img src="{{ url_for('static', filename='images/trainer-pooja.jpg') }}" 
+                     alt="Pooja Sharma"
+                     style="width: 100%; height: 300px; object-fit: cover;"
+                     onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop'">
+                <div style="padding: 1.5rem;">
+                    <h4 style="margin: 0;">Pooja Sharma</h4>
+                    <p style="color: #ffb800; margin: 0.5rem 0;">Yoga Expert</p>
+                    <p style="color: #888;">10+ years • Hatha Yoga</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="#" style="color: #888;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #888;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #888;"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trainer 3 -->
+            <div style="background: #1a1a1a; border-radius: 30px; overflow: hidden;">
+                <img src="{{ url_for('static', filename='images/trainer-vikram.jpg') }}" 
+                     alt="Vikram Rathore"
+                     style="width: 100%; height: 300px; object-fit: cover;"
+                     onerror="this.src='https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300&h=300&fit=crop'">
+                <div style="padding: 1.5rem;">
+                    <h4 style="margin: 0;">Vikram Rathore</h4>
+                    <p style="color: #ffb800; margin: 0.5rem 0;">Boxing Coach</p>
+                    <p style="color: #888;">8+ years • Former boxer</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="#" style="color: #888;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #888;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #888;"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trainer 4 -->
+            <div style="background: #1a1a1a; border-radius: 30px; overflow: hidden;">
+                <img src="{{ url_for('static', filename='images/trainer-neha.jpg') }}" 
+                     alt="Neha Gupta"
+                     style="width: 100%; height: 300px; object-fit: cover;"
+                     onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop'">
+                <div style="padding: 1.5rem;">
+                    <h4 style="margin: 0;">Neha Gupta</h4>
+                    <p style="color: #ffb800; margin: 0.5rem 0;">Nutritionist</p>
+                    <p style="color: #888;">7+ years • Sports nutrition</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="#" style="color: #888;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #888;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #888;"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- App Download Section -->
+<section style="background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); padding: 4rem 0;">
+    <div class="container">
+        <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="font-size: 2.5rem;">For better experience, use <span style="color: #ffb800;">IronCore App</span></h2>
+                <p style="color: #888; font-size: 1.2rem; margin: 2rem 0;">Book classes, track workouts, and connect with trainers on the go.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" style="height: 50px;"></a>
+                    <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" style="height: 50px;"></a>
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 300px; text-align: center;">
+                <img src="{{ url_for('static', filename='images/app-mockup.png') }}" 
+                     alt="App Mockup"
+                     style="max-height: 400px;"
+                     onerror="this.src='https://via.placeholder.com/300x400/1a1a1a/ffb800?text=APP+MOCKUP'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Location Section -->
+<section style="padding: 5rem 0;">
+    <div class="container">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
+            Find us in <span style="color: #ffb800;">your city</span>
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <div style="background: #1a1a1a; padding: 1.5rem; border-radius: 20px; text-align: center;">
+                <h4>Delhi NCR</h4>
+                <p style="color: #888;">12 centers</p>
+            </div>
+            <div style="background: #1a1a1a; padding: 1.5rem; border-radius: 20px; text-align: center;">
+                <h4>Mumbai</h4>
+                <p style="color: #888;">10 centers</p>
+            </div>
+            <div style="background: #1a1a1a; padding: 1.5rem; border-radius: 20px; text-align: center;">
+                <h4>Bangalore</h4>
+                <p style="color: #888;">15 centers</p>
+            </div>
+            <div style="background: #1a1a1a; padding: 1.5rem; border-radius: 20px; text-align: center;">
+                <h4>Pune</h4>
+                <p style="color: #888;">5 centers</p>
+            </div>
+            <div style="background: #1a1a1a; padding: 1.5rem; border-radius: 20px; text-align: center;">
+                <h4>Hyderabad</h4>
+                <p style="color: #888;">8 centers</p>
+            </div>
+            <div style="background: #1a1a1a; padding: 1.5rem; border-radius: 20px; text-align: center;">
+                <h4>Chennai</h4>
+                <p style="color: #888;">6 centers</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section style="background: #0a0a0a; padding: 4rem 0; text-align: center;">
+    <div class="container" style="max-width: 600px;">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">#BeBetterEveryDay</h2>
+        <p style="color: #888; margin-bottom: 2rem;">Join our newsletter for fitness tips and offers</p>
+        <div style="display: flex; gap: 0;">
+            <input type="email" placeholder="Enter your email" style="flex: 1; padding: 1rem; border: none; border-radius: 50px 0 0 50px; background: #1a1a1a; color: white;">
+            <button style="background: #ffb800; color: #000; padding: 1rem 2rem; border: none; border-radius: 0 50px 50px 0; font-weight: bold; cursor: pointer;">SUBSCRIBE</button>
+        </div>
+    </div>
+</section>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    .btn {
+        transition: all 0.3s;
+    }
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(255, 184, 0, 0.3);
+    }
+    [style*="border-radius: 30px;"]:hover img {
+        transform: scale(1.05);
+        transition: transform 0.5s;
+    }
+</style>
+{% endblock %}

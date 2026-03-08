@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{{ class.name }} - IronCore Gym{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800; margin-bottom: 2rem;">
+        <h1 style="color: #ffb800; margin-bottom: 1rem;">{{ class.name }}</h1>
+        <p style="font-size: 1.2rem; color: #aaa; margin-bottom: 2rem;">{{ class.description }}</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+            <div>
+                <h3 style="color: #ffb800;">Class Details</h3>
+                <p><strong>Category:</strong> {{ class.category }}</p>
+                <p><strong>Difficulty:</strong> {{ class.difficulty }}</p>
+                <p><strong>Duration:</strong> {{ class.duration }} minutes</p>
+                <p><strong>Capacity:</strong> {{ class.current_capacity }}/{{ class.max_capacity }}</p>
+            </div>
+            <div>
+                <h3 style="color: #ffb800;">Trainer</h3>
+                <p><strong>Name:</strong> {{ class.trainer.first_name }} {{ class.trainer.last_name }}</p>
+                <p><strong>Specialty:</strong> {{ class.trainer.specialty or 'Fitness Training' }}</p>
+            </div>
+        </div>
+        
+        {% if current_user.is_authenticated %}
+            <form method="POST" action="{{ url_for('book_class', class_id=class.id) }}" style="text-align: center;">
+                <button type="submit" style="padding: 1rem 2rem; background: #ffb800; color: #000; border: none; border-radius: 5px; font-size: 1.1rem; font-weight: bold; cursor: pointer;">Book This Class</button>
+            </form>
+        {% else %}
+            <p style="text-align: center; color: #aaa;">Please <a href="{{ url_for('login') }}" style="color: #ffb800;">login</a> to book this class.</p>
+        {% endif %}
+    </div>
+    
+    <!-- Schedule -->
+    <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800;">
+        <h3 style="color: #ffb800; margin-bottom: 1rem;">Upcoming Sessions</h3>
+        {% if schedules %}
+            <div style="display: grid; gap: 1rem;">
+                {% for schedule in schedules %}
+                <div style="padding: 1rem; background: #2a2a2a; border-radius: 5px;">
+                    <p><strong>{{ schedule.day_of_week }}, {{ schedule.start_time.strftime('%I:%M %p') }} - {{ schedule.end_time.strftime('%I:%M %p') }}</strong></p>
+                    <p>Room: {{ schedule.room or 'Main Studio' }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No upcoming sessions scheduled.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

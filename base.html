@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}IronCore Gym{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0b0b0b; color: #e0e0e0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Navigation */
+        .navbar { background: #111; padding: 1rem 0; border-bottom: 2px solid #ffb800; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: bold; color: #ffb800; text-decoration: none; }
+        .logo span { color: white; }
+        .nav-links a { color: #fff; text-decoration: none; margin-left: 2rem; font-weight: 500; }
+        .nav-links a:hover { color: #ffb800; }
+        .btn-join { background: #ffb800; color: #000 !important; padding: 0.5rem 1.5rem; border-radius: 25px; }
+        
+        /* Alerts */
+        .alert { padding: 1rem; border-radius: 5px; margin: 1rem 0; }
+        .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .alert-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .alert-info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .alert-warning { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        
+        /* Footer */
+        .footer { background: #111; padding: 3rem 0; margin-top: 4rem; border-top: 2px solid #ffb800; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .footer-col h4 { color: #ffb800; margin-bottom: 1rem; }
+        .footer-col a { color: #aaa; text-decoration: none; display: block; margin-bottom: 0.5rem; }
+        .footer-col a:hover { color: #ffb800; }
+        .copyright { text-align: center; padding: 2rem 0 0; color: #666; }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="{{ url_for('index') }}" class="logo">IRON<span>CORE</span></a>
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}">HOME</a>
+                <a href="{{ url_for('classes') }}">CLASSES</a>
+                <a href="{{ url_for('membership') }}">MEMBERSHIP</a>
+                <a href="{{ url_for('about') }}">ABOUT</a>
+                <a href="{{ url_for('contact') }}">CONTACT</a>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('dashboard') }}">DASHBOARD</a>
+                    <a href="{{ url_for('logout') }}">LOGOUT</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}">LOGIN</a>
+                    <a href="{{ url_for('register') }}" class="btn-join">JOIN NOW</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>IRONCORE</h4>
+                    <p>Where strength meets community. 24/7 premium gym in the heart of downtown.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>QUICK LINKS</h4>
+                    <a href="{{ url_for('about') }}">About Us</a>
+                    <a href="{{ url_for('classes') }}">Classes</a>
+                    <a href="{{ url_for('membership') }}">Membership</a>
+                    <a href="{{ url_for('contact') }}">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>HOURS</h4>
+                    <p>Mon-Fri: 5am - 11pm</p>
+                    <p>Sat-Sun: 7am - 8pm</p>
+                    <p style="color: #ffb800;">Premium 24/7 Access</p>
+                </div>
+                <div class="footer-col">
+                    <h4>CONTACT</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Granite Street, NY</p>
+                    <p><i class="fas fa-phone"></i> (212) 555-1234</p>
+                    <p><i class="fas fa-envelope"></i> hello@ironcore.fit</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 IronCore Fitness. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

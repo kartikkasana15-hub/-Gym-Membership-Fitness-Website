@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Membership - IronCore Gym{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="color: #ffb800; text-align: center; margin-bottom: 3rem;">Choose Your Membership</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'danger' if category == 'error' else category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        {% for membership in memberships %}
+        <div style="background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800; text-align: center;">
+            <h3 style="color: #ffb800; margin-bottom: 1rem;">{{ membership.name }}</h3>
+            <div style="font-size: 2rem; font-weight: bold; color: #ffb800; margin-bottom: 1rem;">${{ membership.price }}</div>
+            <p style="color: #aaa; margin-bottom: 2rem;">{{ membership.description }}</p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 2rem; text-align: left;">
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>{{ membership.duration_days }} days access</li>
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>Up to {{ membership.max_classes_per_week }} classes per week</li>
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>24/7 gym access</li>
+                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #28a745; margin-right: 0.5rem;"></i>Free personal training session</li>
+            </ul>
+            {% if current_user.is_authenticated %}
+                <form method="POST" action="{{ url_for('purchase_membership', membership_id=membership.id) }}">
+                    <button type="submit" style="width: 100%; padding: 1rem; background: #ffb800; color: #000; border: none; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer;">Select Plan</button>
+                </form>
+            {% else %}
+                <a href="{{ url_for('register') }}" style="display: block; width: 100%; padding: 1rem; background: #ffb800; color: #000; text-decoration: none; border-radius: 5px; font-size: 1rem; font-weight: bold;">Sign Up to Join</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div style="text-align: center; margin-top: 3rem; background: #1a1a1a; padding: 2rem; border-radius: 10px; border: 1px solid #ffb800;">
+        <h3 style="color: #ffb800; margin-bottom: 1rem;">Not sure which plan is right for you?</h3>
+        <p style="color: #aaa; margin-bottom: 2rem;">Contact our membership specialists for personalized recommendations.</p>
+        <a href="{{ url_for('contact') }}" style="padding: 1rem 2rem; background: #ffb800; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold;">Contact Us</a>
+    </div>
+</div>
+{% endblock %}
