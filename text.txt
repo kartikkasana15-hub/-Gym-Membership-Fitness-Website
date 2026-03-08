@@ -1,0 +1,29 @@
+gym-fitness-app/
+├── app.py
+├── requirements.txt
+├── config.py
+├── models.py
+├── forms.py
+├── database.db
+├── /static/
+│   ├── /css/
+│   │   └── style.css
+│   ├── /js/
+│   │   └── main.js
+│   ├── /images/
+│   └── /uploads/
+├── /templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── classes.html
+│   ├── membership.html
+│   ├── contact.html
+│   ├── about.html
+│   └── admin/
+│       ├── admin_dashboard.html
+│       ├── manage_classes.html
+│       └── manage_members.html
+└── /instance/
